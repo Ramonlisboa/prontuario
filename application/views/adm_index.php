@@ -21,6 +21,7 @@
 			<table class="table table-condensed table-striped">
 				<thead>
 					<tr>
+						<th>#</th>
 						<th>ID</th>
 						<th>Paciente</th>
 						<th>CID/Nome</th>
@@ -31,9 +32,12 @@
 				<tbody>
 					<?php 
 						if($prontuarios){
+							$i = 0;
 							foreach ($prontuarios as $o){
+								$i++;
 								?>
 								<tr>
+									<td><?=$i ?></td>
 									<td><?=$o->id_prontuario_item ?></td>
 									<td><?=$o->nome ?></td>
 									<td><?=$o->cod_cid ?> - <?=$o->nome_cid ?></td>

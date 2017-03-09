@@ -62,7 +62,7 @@ Class M_prontuario extends CI_Model {
 				join cid on cid.id = pi.cod_cid
 				join medico m on m.id = pi.id_medico
 				order by pi.dt_cad desc
-				limit 0,1000";
+				limit 0,10000";
 		
 		$result = $this->db->query($sql)->result();
 		
