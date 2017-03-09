@@ -1,18 +1,18 @@
 <?php
 
-Class M_medico extends CI_Model {
+Class M_paciente extends CI_Model {
 	
 	public function store($dados = null, $id = null)
 	{
 		if($id){
 			$this->db->where('id',$id);
-			if($this->db->update('medico',$dados)){
+			if($this->db->update('paciente',$dados)){
 				return true;
 			}else {
 				return false;
 			}
 		} else {
-			if($this->db->insert('medico',$dados)){
+			if($this->db->insert('paciente',$dados)){
 				return true;
 			} else {
 				return false;
@@ -26,13 +26,13 @@ Class M_medico extends CI_Model {
 			$this->db->where('id',$id);			
 		}
 		$this->db->order_by("id", 'desc');
-		return $this->db->get('medico');
+		return $this->db->get('paciente');
 	}
 	
 	public function delete($id = null)
 	{
 		if($id){
-			return $this->db->delete('medico',$id);
+			return $this->db->delete('paciente',$id);
 		}
 	}
 }
