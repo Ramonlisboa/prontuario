@@ -1,16 +1,30 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Medico extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		
+// 		$this->load->model('M_medico','m_medicos');	
+		$this->load->model('m_prontuario');	
+	}
 	/**
 	 * Index Page for this controller.
 	 *
 	 */
 	public function index()
 	{
-		$data['cadastros'] = $this->m_medicos->get();
-		$this->load->view('medico_list', $data);
+		$data['prontuarios'] = $this->m_prontuario->getUltimosItensProntuario();
+		$data['nome_view'] = 'adm_index';
+		$this->load->view('v_layout', $data);
+	}
+	public function listaMedicos()
+	{
+// 		$data['cadastros'] = $this->m_medicos->get();
+		$data['nome_view'] = 'medico_list';
+		$this->load->view('v_layout', $data);
 	}
 	
 	public function cadastro()

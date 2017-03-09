@@ -1,6 +1,6 @@
 <?php
 
-Class M_medico extends CI_Model {
+class M_medico extends CI_Model {
 	
 	public function store($dados = null, $id = null)
 	{
