@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Prontuario</a>
+                <a class="navbar-brand" href="<?=base_url() ?>">Prontuario</a>
             </div>
             <!-- Top Menu Items -->
           
@@ -19,7 +19,7 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Home</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Prontuários</a>
+                        <a href="<?=base_url() ?>prontuario"><i class="fa fa-fw fa-bar-chart-o"></i> Prontuários</a>
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Medicos</a>

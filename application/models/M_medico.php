@@ -26,7 +26,7 @@ class M_medico extends CI_Model {
 			$this->db->where('id',$id);			
 		}
 		$this->db->order_by("id", 'desc');
-		return $this->db->get('medico');
+		return $this->db->get('medico')->row();
 	}
 	
 	public function delete($id = null)
