@@ -6,7 +6,7 @@
 				<div class="panel-title">Selecione um Paciente</div>
 			</div>
 			<div class="panel-body">
-				<form name="paciente" action="<?=base_url() ?>paciente/pesquisaPaciente" autocomplete="off">
+				<form name="paciente" action="<?=base_url() ?>paciente/pesquisaPaciente" autocomplete="off" onsubmit="return false;">
 					<div class="row">
 						<div class="col-lg-2">
 							<input name="id_paciente" id="id_paciente" class="form-control" placeholder="Id" onchange="getPacienteId(this.value);">

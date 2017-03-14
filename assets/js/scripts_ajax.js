@@ -10,11 +10,11 @@ $(document).ready(function(){
 	$('.date-picker').val(dataCurrent);
 	
 	$(".autocomplete-cid").autocomplete({
-		source: 'prontuario/getCid' 
+		source: 'getCid' 
 	});
 	
 	$(".autocomplete-paciente").autocomplete({
-		source: 'prontuario/getPaciente', 
+		source: 'getPaciente', 
 		select: function (event, ui){
 			//alert(ui.label);
 			console.log(ui.item);
@@ -58,7 +58,7 @@ function includesScripts(url){
 	
 	var scriptTag = urlCurr.createElement("script");
 	scriptTag.setAttribute('type', 'text/javascript');
-	scriptTag.setAttribute('src', getContexto() + jsFile);
+	scriptTag.setAttribute('src', urlCurr + jsFile);
 	try {
 		urlCurr.body.appendChild(script);
 	} catch (e) {
@@ -66,8 +66,10 @@ function includesScripts(url){
 	}
 }
 
-function getListItensProntuarios(){
-	
+function getListItensProntuarios(button){
+//	var form = button.form;
+	var paramPagina = $('#id_paciente').val();
+	getPagina('prontuario/getListProntuarioPaciente/'+paramPagina,'#tbDados');
 }
 
 function btnModalSaveHandler(){
@@ -99,13 +101,13 @@ function btnModalSaveHandler(){
 function getPacienteId(id) {
      $.ajax({
         type:'GET',
-        url: 'prontuario/getPacienteId/'+id,
+        url: '/prontuario/getPacienteId/'+id,
         dataType: 'json',
         success: function(data) {
             $("#id_paciente").val(data.id);
             $("#nome_paciente").val(data.nome);
             
-            var funcOnClick = "getPaginaModal('prontuario/incluirItem/"+id+"/1','#respModal','#modalForm')";
+            var funcOnClick = "getPaginaModal('/prontuario/incluirItem/"+id+"/1','#respModal','#modalForm')";
             $("#btnNovoItem").attr("onclick",funcOnClick);
         },
         beforeSend: function(){

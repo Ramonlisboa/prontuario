@@ -113,4 +113,11 @@ class Prontuario extends CI_Controller {
 			}
 		}
 	}
+	public function getListProntuarioPaciente()
+	{
+		$paciente = $this->input->post();
+		if($paciente)
+			$data['itensPront'] = $this->m_prontuario->getUltimosItensProntuarioPaciente($paciente["id"]);
+		$this->load->view('pront_listProntPaciente', $data);
+	}
 }
