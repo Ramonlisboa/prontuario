@@ -27,7 +27,7 @@
 <div class="row">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<div class="panel-title">Lista dos últimos Registros na Tabela Prontuário</div>
+			<div class="panel-title">Lista dos últimos Itens do Prontuário do Paciente</div>
 		</div>
 		<div class="panel-body">
 			<table class="table table-condensed table-striped table-bordered">

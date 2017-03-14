@@ -82,7 +82,7 @@ Class M_prontuario extends CI_Model {
 				join prontuario_item pi on pr.id = pi.id_prontuario
 				join cid on cid.id = pi.cod_cid
 				join medico m on m.id = pi.id_medico
-				where b pi.id_paciente = $id_paciente
+				where pi.id_paciente = $id_paciente
 				order by pi.dt_cad desc
 				limit 0,150";
 		
