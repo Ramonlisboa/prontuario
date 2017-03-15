@@ -15,7 +15,7 @@
 							<input name="nome" id="nome_paciente" class="form-control autocomplete-paciente" placeholder="Nome">
 						</div>
 						<div class="col-lg-1 col-lg-offset-3">
-							<button class="btn btn-primary" onclick="getListItensProntuarios(this);"> <i class="fa fa-search"></i> </button>
+							<button class="btn btn-primary" onclick="getPacienteId(this.id_paciente);"> <i class="fa fa-search"></i> </button>
 						</div>
 					</div>
 				</form>
@@ -36,7 +36,6 @@
 						<th width="1%"><a href="javascript:;" id="btnNovoItem" onclick=""><i class="btn btn-sm btn-success fa fa-plus"></i></a></th>
 						<th>#</th>
 						<th>ID</th>
-						<th>Paciente</th>
 						<th>CID/Nome</th>
 						<th>Data</th>
 						<th>Medico</th>

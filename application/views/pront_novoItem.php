@@ -24,7 +24,7 @@
 					<div class="row">
 						<div class="col-md-2">Cid</div>
 						<div class="col-md-6">
-							<input type="text" name="cod_cid" class="form-control autocomplete-cid" />
+							<input type="text" name="cod_cid" value="<? if($prontuario->cod_cid) echo $prontuario->cod_cid; ?>" class="form-control autocomplete-cid" />
 						</div>
 					</div>
 					<div class="clearfix"></div>

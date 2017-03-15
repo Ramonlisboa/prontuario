@@ -28,6 +28,15 @@ Class M_prontuario extends CI_Model {
 		return $this->db->get('prontuario');
 	}
 	
+	public function getItemProntuario($id = null)
+	{
+		if($id){
+			$this->db->where('id',$id);			
+		}
+		$this->db->order_by("id", 'desc');
+		return $this->db->get('prontuario_item');
+	}
+	
 	public function getCondElements($cond = null, $order = array(), $sql = null)
 	{
 		if($cond){
@@ -76,17 +85,21 @@ Class M_prontuario extends CI_Model {
 	 */
 	public function getUltimosItensProntuarioPaciente($id_paciente)
 	{
-		$sql = "select pi.id as id_prontuario_item, pa.nome as nome, pi.dt_cad , pi.cod_cid as cod_cid, cid.nome as nome_cid, m.nome nome_medico
+		$sql = "select pa.id as id_paciente,  pi.id as id_prontuario_item, pa.nome as nome, pi.dt_cad , c.cod_cid as cod_cid, c.nome as nome_cid, m.id as id_medico, m.nome nome_medico
 				from paciente pa
 				join prontuario pr on pr.id_paciente = pa.id
 				join prontuario_item pi on pr.id = pi.id_prontuario
-				join cid on cid.id = pi.cod_cid
+				join cid c on c.id = pi.cod_cid
 				join medico m on m.id = pi.id_medico
-				where pi.id_paciente = $id_paciente
+				where pa.id = $id_paciente
 				order by pi.dt_cad desc
 				limit 0,150";
 		
 		$result = $this->db->query($sql)->result();
+		
+// 		echo "<pre>";
+// 		print_r($sql);
+// 		echo "</pre>";
 		
 		if($result) {
 			return $result;
@@ -102,6 +115,20 @@ Class M_prontuario extends CI_Model {
 		$row = $this->db->select("pa.id as id_paciente, pa.nome, pr.id as id_prontuario")
 							->join("paciente pa","pr.id_paciente = pa.id")
 							->where("pa.id=$id_paciente")
+							->get('prontuario pr')
+							->row();
+		
+		if($row)
+			return $row;
+	}
+	
+	public function htmlEditItemPaciente($id_prontuario_item)
+	{
+		$row = $this->db->select("pa.id as id_paciente, pa.nome, pr.id as id_prontuario, c.cod_cid as cod_cid, ")
+							->join("paciente pa","pr.id_paciente = pa.id")
+							->join("prontuario_item pi","pr.id = pi.id_prontuario")
+							->join("cid c","pi.cod_cid = c.id")
+							->where("pi.id=$id_prontuario_item")
 							->get('prontuario pr')
 							->row();
 		

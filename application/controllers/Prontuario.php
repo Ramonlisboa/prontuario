@@ -78,12 +78,17 @@ class Prontuario extends CI_Controller {
 	 * 
 	 */
 	
-	public function incluirItem($id_paciente)
+	public function incluirItem($id_paciente=null, $id_medico=null, $id_prontuario_item = null)
 	{
-		$id_medico = 1; //seria recuperado o id do medico da Sessão
-		$data['titulo'] = 'Novo Item no Prontuário';
+		if($id_prontuario_item){
+			$data['prontuario'] = $this->m_prontuario->htmlEditItemPaciente($id_prontuario_item);
+			$data['titulo'] = 'Editar Item do Prontuário';
+		} else {
+			$id_medico = 1; //seria recuperado o id do medico da Sessão
+			$data['titulo'] = 'Novo Item no Prontuário';
+			$data['prontuario'] = $this->m_prontuario->htmlNovoItemPaciente($id_paciente);
+		}
 		$data['medico'] = $this->m_medico->get($id_medico);
-		$data['prontuario'] = $this->m_prontuario->htmlNovoItemPaciente($id_paciente);
 		$this->load->view('pront_novoItem',$data);
 	}
 	
@@ -113,7 +118,7 @@ class Prontuario extends CI_Controller {
 			}
 		}
 	}
-	public function getListProntuarioPaciente($id_paciente)
+	public function getListProntuarioPaciente($id_paciente=null, $id_medico=null)
 	{
 		$paciente = $id_paciente;
 		if($paciente)
